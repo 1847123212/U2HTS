@@ -10,32 +10,32 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: checkout
+    - name: Fetch code
       uses: actions/checkout@v6
       with:
         submodules: recursive
     
-    - name: build for Pico
+    - name: Build for Pico
       id: build4pico
       uses: samyarsadat/Pico-Build-Action@v1
       with:
         source_dir: "."
         cmake_args: "-DCMAKE_BUILD_TYPE=MinSizeRel -DPICO_BOARD=pico"
         
-    - name: upload Pico firmware
+    - name: Upload Pico artifacts
       uses: actions/upload-artifact@v7
       with:
           name: ${{ github.event.repository.name }}_Pico-${{ github.run_id }}
           path: ${{steps.build4pico.outputs.output_dir}}
     
-    - name: build for Pico2
+    - name: Build for Pico2
       id: build4pico2
       uses: samyarsadat/Pico-Build-Action@v1
       with:
         source_dir: "."
         cmake_args: "-DCMAKE_BUILD_TYPE=MinSizeRel -DPICO_BOARD=pico2"
 
-    - name: Upload firmware
+    - name: Upload Pico2 artifacts
       uses: actions/upload-artifact@v7
       with:
         name: ${{ github.event.repository.name }}_Pico2-${{ github.run_id }}
