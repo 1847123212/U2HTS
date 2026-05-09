@@ -46,7 +46,7 @@ After a idle time (~5s) system will apply new config (and save to flash if `U2HT
 | Config | Name | Value |
 | --- | --- | --- |
 | Controller name | `controller` | refer `Touch controllers` section |
-| Bus type | `bus_type` | refer [u2hts_core.h](https://github.com/U2HTS/u2hts_core/blob/main/u2hts_core.h#L115), default `UB_I2C` |
+| Bus type | `bus_type` | refer [u2hts_core.h](https://github.com/U2HTS/u2hts_core/blob/main/u2hts_core.h), default `UB_I2C` |
 | Invert X axis | `x_invert` | 0/1 |
 | Invert Y axis | `y_invert` | 0/1 |
 | Swap X&Y axis | `x_y_swap` | 0/1 |
@@ -54,7 +54,7 @@ After a idle time (~5s) system will apply new config (and save to flash if `U2HT
 | Y coordinate offset | `y_offset` | -32768-32767 |
 | Polling mode | `polling_mode` | 0/1 |
 | Report delay | `report_delay` | uint32_t, default 0 |
-| Interrupt trigger type | `irq_type` | refer [u2hts_core.h](https://github.com/U2HTS/u2hts_core/blob/main/u2hts_core.h#L108) |
+| Interrupt trigger type | `irq_type` | refer [u2hts_core.h](https://github.com/U2HTS/u2hts_core/blob/main/u2hts_core.h) |
 | Custom Controller Configuration | `custom_controller_config` | string, max length is 512 by default |
  
 These values must be configured when using an controller that does NOT support read config:
@@ -76,10 +76,10 @@ Drivers will set the default values of bus configuration, but you can also overr
 | SPI CPOL | `spi_cpol` | 0/1 |
 
 # Custom Controller Configuration
-If a controller requires additional parameters for configuration, the configuration can be written as key-value pairs into [custom_controller_config](https://github.com/U2HTS/u2hts_core/blob/main/u2hts_core.h#L197), and then retrieved within the controller driver.  
+If a controller requires additional parameters for configuration, the configuration can be written as key-value pairs into [custom_controller_config](https://github.com/U2HTS/u2hts_core/blob/main/u2hts_core.h), and then retrieved within the controller driver.  
 The configuration format is `xxx.yyy=zzz`, with multiple configuration items separated by spaces, such as `aaa.bbb=ccc foo.bar=yum`.  
 The maximum length of `custom_controller_config` and the maximum key length are defined in [u2hts_core.h](https://github.com/U2HTS/u2hts_core/blob/main/u2hts_core.h#L38).  
-See [dummy_test.c](https://github.com/U2HTS/u2hts_touch_controllers/blob/main/dummy_test.c#L27) for examples.  
+See [dummy_test.c](https://github.com/U2HTS/u2hts_touch_controllers/blob/main/dummy_test.c) for examples.  
 
 # Ports
 | MCU | Key | Persistent config | LED | 
