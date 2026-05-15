@@ -70,8 +70,8 @@ int main() {
   bi_decl(bi_ptr_int32(U2HTS_BI_INFO_BUS_CONFIG, U2HTS_BI_INFO_BUS_ID,
                        override_i2c_config, 0));
   // controller primary I2C address
-  bi_decl(bi_ptr_int32(U2HTS_BI_INFO_BUS_CONFIG, U2HTS_BI_INFO_BUS_ID, primary_i2c_addr,
-                       0x00));
+  bi_decl(bi_ptr_int32(U2HTS_BI_INFO_BUS_CONFIG, U2HTS_BI_INFO_BUS_ID,
+                       primary_i2c_addr, 0x00));
   // override I2C speed
   bi_decl(bi_ptr_int32(U2HTS_BI_INFO_BUS_CONFIG, U2HTS_BI_INFO_BUS_ID,
                        i2c_speed, 0x00));
@@ -98,10 +98,15 @@ int main() {
   // Polling mode
   bi_decl(bi_ptr_int32(U2HTS_BI_INFO_MISC_CONFIG, U2HTS_BI_INFO_MISC_ID,
                        polling_mode, 0));
-
+  // custom config string
   bi_decl(bi_ptr_string(U2HTS_BI_INFO_MISC_CONFIG, U2HTS_BI_INFO_MISC_ID,
                         custom_controller_config, "",
                         U2HTS_CUSTOM_CONFIG_STR_MAX_TOTAL_LENGTH));
+  // Pin information
+  bi_decl(bi_2pins_with_func(U2HTS_I2C_SDA, U2HTS_I2C_SCL, GPIO_FUNC_I2C));
+  bi_decl(bi_1pin_with_name(U2HTS_TP_INT, "Touch controller INT pin"));
+  bi_decl(bi_1pin_with_name(U2HTS_TP_RST, "Touch controller RST pin"));
+  bi_decl(bi_1pin_with_name(U2HTS_USR_KEY, "User key pin"));
 
   u2hts_config cfg = {.controller = controller,
                       .bus_type = bus_type,

@@ -20,14 +20,38 @@
 #define U2HTS_SWAP16(x) __builtin_bswap16(x)
 #define U2HTS_SWAP32(x) __builtin_bswap32(x)
 
+#ifndef PICO_DEFAULT_I2C
 #define U2HTS_I2C i2c1
+#else
+#define U2HTS_I2C i2c_default
+#endif
+
 #define U2HTS_I2C_TIMEOUT 10 * 1000  // 10ms
 
-#define U2HTS_I2C_SDA 10
-#define U2HTS_I2C_SCL 11
-#define U2HTS_TP_INT 6
-#define U2HTS_TP_RST 5
-#define U2HTS_USR_KEY 9
+#ifndef PICO_DEFAULT_I2C_SDA_PIN
+#define U2HTS_I2C_SDA 4
+#else
+#define U2HTS_I2C_SDA PICO_DEFAULT_I2C_SDA_PIN
+#endif
+
+#ifndef PICO_DEFAULT_I2C_SCL_PIN
+#define U2HTS_I2C_SCL 5
+#else
+#define U2HTS_I2C_SCL PICO_DEFAULT_I2C_SCL_PIN
+#endif
+
+#ifndef U2HTS_TP_INT
+#define U2HTS_TP_INT 2
+#endif
+
+#ifndef U2HTS_TP_RST
+#define U2HTS_TP_RST 3
+#endif
+
+#ifndef U2HTS_USR_KEY
+#define U2HTS_USR_KEY 6
+#endif
+
 // last page
 #define U2HTS_CONFIG_STORAGE_OFFSET PICO_FLASH_SIZE_BYTES - 8192
 

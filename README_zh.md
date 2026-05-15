@@ -91,10 +91,29 @@
 # RP2 电路
 `u2hts_rp2.h`: 
 ```c
-#define U2HTS_I2C_SDA 10
-#define U2HTS_I2C_SCL 11
-#define U2HTS_TP_INT 6
-#define U2HTS_TP_RST 5
+#ifndef PICO_DEFAULT_I2C_SDA_PIN
+#define U2HTS_I2C_SDA 4
+#else
+#define U2HTS_I2C_SDA PICO_DEFAULT_I2C_SDA_PIN
+#endif
+
+#ifndef PICO_DEFAULT_I2C_SCL_PIN
+#define U2HTS_I2C_SCL 5
+#else
+#define U2HTS_I2C_SCL PICO_DEFAULT_I2C_SCL_PIN
+#endif
+
+#ifndef U2HTS_TP_INT
+#define U2HTS_TP_INT 2
+#endif
+
+#ifndef U2HTS_TP_RST
+#define U2HTS_TP_RST 3
+#endif
+
+#ifndef U2HTS_USR_KEY
+#define U2HTS_USR_KEY 6
+#endif
 ```
 所有I/O端口直接连接即可，无需任何上/下拉电阻。  
 

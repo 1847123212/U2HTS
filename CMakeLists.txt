@@ -64,8 +64,21 @@ set(SOURCES
 # Add executable. Default name is the project name, version 0.1
 add_executable(U2HTS ${SOURCES} ${TOUCH_CONTROLLERS})
 
+find_package(Git QUIET)
+if(GIT_FOUND)
+    execute_process(
+        COMMAND ${GIT_EXECUTABLE} describe --tags --dirty --always
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        OUTPUT_VARIABLE U2HTS_RP2_GIT_SHA
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        ERROR_QUIET
+    )
+else()
+    set(U2HTS_RP2_GIT_SHA "UNKNOWN")
+endif()
+
 pico_set_program_name(U2HTS "U2HTS")
-pico_set_program_version(U2HTS "0.1")
+pico_set_program_version(U2HTS ${U2HTS_RP2_GIT_SHA})
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(U2HTS 1)
