@@ -1,6 +1,7 @@
 # U2HTS
 基于树莓派RP2系列MCU的USB HID多点触摸屏方案。  
 `U2HTS` 是 **U**SB to **H**ID **T**ouch**S**creen 的缩写。  
+**注意**: 本项目仍在大量开发中。欢迎开 issue 和提 pr。
 
 # 特性
 - 支持多点触摸（最大10点）

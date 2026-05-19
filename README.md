@@ -1,6 +1,7 @@
 # U2HTS
 USB HID multitouch touchscreen based on Raspberry Pi RP2 MCUs.  
 `U2HTS` stands for **U**SB **2** **H**ID **T**ouch**S**creen.  
+**Note**: This project is still under heavy developments. Pull requests and issues are welcome.  
 [zh_CN(简体中文)](./README_zh.md)
 
 # Features
